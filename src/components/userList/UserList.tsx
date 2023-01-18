@@ -1,18 +1,16 @@
-import React, {Dispatch, FC, useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {fetchUsers} from "../../store/action-creators/actionCreators";
-import {useDispatch} from "react-redux";
-import {UserAction} from "../../types/userReducerTypes";
+import {useActions} from "../../hooks/useAction";
 
 
 const UserList: FC = () => {
-    const dispatch: Dispatch<UserAction> = useDispatch()
+    const {fetchUsers} = useActions();
     const {loading, users, error} = useTypedSelector(state => state.user)
     console.log(users)
-    const getUsers = ()=>  dispatch(fetchUsers())
+
 
     useEffect(() => {
-        getUsers()
+        fetchUsers()//! Непонятный баг с типами РЕШЕНО
     }, []);
 
     if (loading) {

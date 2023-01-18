@@ -7,7 +7,7 @@ export const fetchUsers = () => {
         try {
             dispatch({type: UserActionTypes.FETCH_USERS})
             const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-            setTimeout(() => {
+            setTimeout(() => {   // имитация нагруженного запроса
                 dispatch({type: UserActionTypes.FETCH_USERS_SUCCESS, payload: response.data})
             }, 500)
         } catch (e) {
