@@ -3,6 +3,8 @@ export enum UserActionTypes {
     FETCH_USERS = "FETCH_USERS",
     FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS",
     FETCH_USERS_ERROR = "FETCH_USERS_ERROR",
+    DELETE_USER = "DELETE_USER"
+
 }
 
 interface FetchUsersAction {
@@ -18,6 +20,11 @@ interface FetchUsersErrorAction {
     payload: string
 }
 
+interface DeleteUser {
+    type: UserActionTypes.DELETE_USER;
+    payload: number
+}
+
 
 export interface UserState {
     users: any[]
@@ -26,4 +33,4 @@ export interface UserState {
 }
 
 
-export type UserAction = FetchUsersAction | FetchUsersSuccessAction | FetchUsersErrorAction;
+export type UserAction = FetchUsersAction | FetchUsersSuccessAction | FetchUsersErrorAction | DeleteUser;
